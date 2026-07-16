@@ -1,26 +1,25 @@
-# Architecture Portfolio
+# snINcorp — Architecture Portfolio
 
-Single-page Next.js 14 (App Router) portfolio for showcasing architecture
-projects. Built for structure first — visual design is still in progress and
-will be layered on via Tailwind utility classes.
+Single-page Next.js 14 (App Router) portfolio for snINcorp, an architecture,
+urbanism, and construction management studio in São Paulo. Implements the
+design from Claude Design (`Portfolio.dc.html`).
 
 ## Status
 
-This is a **temporary scaffold**. Placeholder content in place:
-
-- Hero background is a CSS gradient animation (`src/components/sections/Hero.tsx`)
-  — swap for a video (`/public/animations/hero-bg.webm`) or canvas/Three.js scene
-  once the final animation is exported from Claude Design.
-- Project images (`public/images/projects/*`) are generated placeholders.
-- Contact form posts to `/api/contact`, which does not exist yet — wire up
-  Formspree, Resend, or a Next.js Route Handler before shipping.
-- Colors, typography, and spacing use Tailwind defaults; final design tokens
-  go in `tailwind.config.ts`.
+- Hero features an animated SVG wordmark background and fade-in copy, built
+  with plain CSS keyframes (`src/app/globals.css`).
+- Project cards use a diagonal-stripe placeholder pattern with a text label
+  instead of real photos — swap in real images once available.
+- Contact section is informational only (email, location, Instagram) — no
+  form, matching the design.
+- Styling is plain CSS + inline styles ported directly from the design file,
+  not a utility framework — no design tokens/theme layer exists yet.
 
 ## Stack
 
 - Next.js 14 (App Router) + TypeScript
-- Tailwind CSS
+- Plain CSS (`src/app/globals.css`) for resets, hover states, and keyframe
+  animations; inline styles for layout, matching the source design 1:1
 - Project data as JSON (`data/projects/*/metadata.json`), loaded server-side
   in `src/lib/projects.ts`
 
@@ -28,24 +27,23 @@ This is a **temporary scaffold**. Placeholder content in place:
 
 ```
 src/
-  app/            Root layout + single-page route
+  app/            Root layout, global styles, single-page route
   components/
-    sections/     Hero, Projects, About, Contact
+    sections/     Hero, Projects, Contact
   lib/             Data loading (projects.ts)
-  hooks/           useIntersectionObserver
   types/           Shared TypeScript interfaces
 data/projects/     One folder per project, metadata.json each
-public/images/     Project images (hero + gallery)
-public/animations/ Hero background animation (video/webm)
 ```
 
 ## Adding a Project
 
 1. Create `data/projects/<project-id>/metadata.json` following the `Project`
    interface in `src/types/index.ts`.
-2. Add images to `public/images/projects/<project-id>/hero.jpg` and
-   `public/images/projects/<project-id>/details/*.jpg`.
-3. The homepage picks up new projects automatically via `getAllProjects()`.
+2. The Projects section renders exactly one featured project (`featured: true`)
+   and up to five others, arranged into the design's fixed bento layout
+   (2 large + 3 medium + 1 featured strip) — adjust `src/components/sections/Projects.tsx`
+   if the project count changes.
+3. The homepage picks up projects automatically via `getAllProjects()`.
 
 ## Development
 
@@ -65,8 +63,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Next Steps
 
-- Export and drop in the final hero animation.
-- Apply final design tokens (colors, fonts, spacing) once design is ready.
-- Replace placeholder project images/data with real content.
-- Wire up the contact form to a real backend/service.
-- Decide on project detail interaction pattern (current: modal overlay).
+- Replace placeholder project cards with real photography.
+- Decide on a project detail interaction (the design has none yet — cards are
+  hover-only, `cursor: pointer` with no click destination).
+- Wire up the contact email/Instagram links to real destinations if placeholders.
