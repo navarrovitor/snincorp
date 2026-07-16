@@ -1,0 +1,20 @@
+{
+  "id": "project-1",
+  "title": "Modern Office Building",
+  "location": "São Paulo, Brazil",
+  "year": 2023,
+  "program": "Commercial",
+  "description": "A 15-story office complex designed around a central atrium that draws daylight deep into the floor plate. The facade uses a responsive brise-soleil system to reduce solar gain while maintaining expansive views.",
+  "images": {
+    "hero": "/images/projects/project-1/hero.jpg",
+    "gallery": [
+      "/images/projects/project-1/details/1.jpg",
+      "/images/projects/project-1/details/2.jpg"
+    ]
+  },
+  "metadata": {
+    "area": "25,000m²",
+    "client": "Developer XYZ",
+    "team": "Studio Núcleo"
+  }
+}

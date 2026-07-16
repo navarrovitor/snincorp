@@ -1,0 +1,20 @@
+{
+  "id": "project-3",
+  "title": "Riverside Cultural Center",
+  "location": "Porto, Portugal",
+  "year": 2021,
+  "program": "Cultural",
+  "description": "A public cultural center housing a gallery, black-box theater, and workshop spaces along a reclaimed riverfront. The concrete-and-glass volume is elevated to preserve views and accommodate seasonal flooding.",
+  "images": {
+    "hero": "/images/projects/project-3/hero.jpg",
+    "gallery": [
+      "/images/projects/project-3/details/1.jpg",
+      "/images/projects/project-3/details/2.jpg"
+    ]
+  },
+  "metadata": {
+    "area": "8,200m²",
+    "client": "Municipality of Porto",
+    "team": "Studio Núcleo"
+  }
+}
