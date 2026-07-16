@@ -1,21 +1,27 @@
 import type { Project } from "@/types";
+import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
   project: Project;
-  imageHeight: number;
+  size: "large" | "medium";
 }
 
-export default function ProjectCard({ project, imageHeight }: ProjectCardProps) {
+const IMAGE_SIZE_CLASS = {
+  large: styles.imgLarge,
+  medium: styles.imgMedium,
+};
+
+export default function ProjectCard({ project, size }: ProjectCardProps) {
   return (
-    <div className="proj-card">
-      <div className="proj-img" style={{ height: imageHeight }}>
-        <div className="proj-img-inner" style={{ height: imageHeight }}>
-          <span className="proj-placeholder">{project.placeholderLabel}</span>
+    <div className={styles.card}>
+      <div className={`${styles.img} ${IMAGE_SIZE_CLASS[size]}`}>
+        <div className={styles.imgInner}>
+          <span className={styles.placeholder}>{project.placeholderLabel}</span>
         </div>
       </div>
-      <div style={{ padding: "20px 0 0" }}>
-        <div className="proj-title">{project.title}</div>
-        <div className="proj-meta">
+      <div className={styles.body}>
+        <div className={styles.title}>{project.title}</div>
+        <div className={styles.meta}>
           {project.location} &nbsp;·&nbsp; {project.year} &nbsp;·&nbsp; {project.program}
         </div>
       </div>

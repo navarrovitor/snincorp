@@ -1,37 +1,10 @@
+import styles from "./Footer.module.css";
+
 export default function Footer() {
   return (
-    <footer
-      style={{
-        background: "#1A1A1A",
-        padding: "28px 64px",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      <span
-        style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 11,
-          letterSpacing: "0.12em",
-          color: "#555",
-          textTransform: "uppercase",
-        }}
-      >
-        © 2025 snINcorp
-      </span>
-      <span
-        style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 11,
-          letterSpacing: "0.12em",
-          color: "#555",
-          textTransform: "uppercase",
-        }}
-      >
-        Arquitetura · Urbanismo · Gerenciamento
-      </span>
+    <footer className={styles.footer}>
+      <span className={styles.text}>© 2025 snINcorp</span>
+      <span className={styles.text}>Arquitetura · Urbanismo · Gerenciamento</span>
     </footer>
   );
 }

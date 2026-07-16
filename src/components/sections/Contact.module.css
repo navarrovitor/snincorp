@@ -1,0 +1,64 @@
+.section {
+  padding: 120px 64px;
+  background: #1a1a1a;
+  color: #fafaf8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.eyebrow {
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f09419;
+  margin-bottom: 32px;
+}
+
+.heading {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.headingBar {
+  width: 40px;
+  height: 1px;
+  background: #f09419;
+}
+
+.details {
+  padding-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6b95a5;
+  margin-bottom: 10px;
+}
+
+.value {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #fafaf8;
+  transition: color 0.2s;
+}
+
+.valueMultiline {
+  line-height: 1.6;
+}

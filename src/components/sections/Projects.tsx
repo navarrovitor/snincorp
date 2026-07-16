@@ -1,5 +1,7 @@
 import type { Project } from "@/types";
 import ProjectCard from "@/components/ProjectCard";
+import cardStyles from "@/components/ProjectCard.module.css";
+import styles from "./Projects.module.css";
 
 interface ProjectsProps {
   projects: Project[];
@@ -11,116 +13,40 @@ export default function Projects({ projects }: ProjectsProps) {
   const [row1, row2] = [rest.slice(0, 2), rest.slice(2, 5)];
 
   return (
-    <section id="projetos" style={{ padding: "120px 64px" }}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "baseline",
-          justifyContent: "space-between",
-          marginBottom: 72,
-          paddingBottom: 32,
-          borderBottom: "1px solid #E8E4DE",
-        }}
-      >
-        <h2
-          style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize: 48,
-            fontWeight: 300,
-            letterSpacing: "-0.01em",
-          }}
-        >
-          Projetos Selecionados
-        </h2>
-        <span
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 11,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "#A8A49E",
-          }}
-        >
-          2020 — 2025
-        </span>
+    <section id="projetos" className={styles.section}>
+      <div className={styles.header}>
+        <h2 className={styles.heading}>Projetos Selecionados</h2>
+        <span className={styles.range}>2020 — 2025</span>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "2fr 1fr",
-          gap: 40,
-          marginBottom: 40,
-          alignItems: "start",
-        }}
-      >
+      <div className={styles.rowLarge}>
         {row1.map((project) => (
-          <ProjectCard key={project.id} project={project} imageHeight={420} />
+          <ProjectCard key={project.id} project={project} size="large" />
         ))}
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          gap: 40,
-          marginBottom: 40,
-          alignItems: "start",
-        }}
-      >
+      <div className={styles.rowMedium}>
         {row2.map((project) => (
-          <ProjectCard key={project.id} project={project} imageHeight={280} />
+          <ProjectCard key={project.id} project={project} size="medium" />
         ))}
       </div>
 
       {featured && (
-        <div
-          className="proj-card"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 40,
-            alignItems: "center",
-            padding: "48px 0",
-            borderTop: "1px solid #E8E4DE",
-            borderBottom: "1px solid #E8E4DE",
-          }}
-        >
-          <div className="proj-img" style={{ height: 240 }}>
-            <div className="proj-img-inner" style={{ height: 240 }}>
-              <span className="proj-placeholder">{featured.placeholderLabel}</span>
+        <div className={`${cardStyles.card} ${styles.featured}`}>
+          <div className={`${cardStyles.img} ${cardStyles.imgFeature}`}>
+            <div className={cardStyles.imgInner}>
+              <span className={cardStyles.placeholder}>{featured.placeholderLabel}</span>
             </div>
           </div>
           <div>
-            <div
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: 11,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "#F09419",
-                marginBottom: 16,
-              }}
-            >
-              Projeto em Destaque
-            </div>
-            <div className="proj-title" style={{ fontSize: 34, lineHeight: 1.1, marginBottom: 12 }}>
+            <div className={styles.featuredEyebrow}>Projeto em Destaque</div>
+            <div className={`${cardStyles.title} ${cardStyles.titleFeature}`}>
               {featured.title}
             </div>
-            <div className="proj-meta" style={{ marginBottom: 24 }}>
+            <div className={`${cardStyles.meta} ${cardStyles.metaFeature}`}>
               {featured.location} &nbsp;·&nbsp; {featured.year} &nbsp;·&nbsp; {featured.program}
             </div>
-            <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: 14,
-                lineHeight: 1.8,
-                color: "#6B6560",
-                maxWidth: 420,
-              }}
-            >
-              {featured.description}
-            </p>
+            <p className={styles.featuredDescription}>{featured.description}</p>
           </div>
         </div>
       )}
