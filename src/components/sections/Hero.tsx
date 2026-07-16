@@ -1,3 +1,5 @@
+"use client";
+
 export default function Hero() {
   const handleScrollToProjects = () => {
     document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
