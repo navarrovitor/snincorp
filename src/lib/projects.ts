@@ -16,31 +16,8 @@ export function getAllProjects(): Project[] {
   const folders = fs
     .readdirSync(PROJECTS_DIR, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name);
+    .map((entry) => entry.name)
+    .sort();
 
-  return folders
-    .map(readProjectFolder)
-    .sort((a, b) => b.year - a.year);
-}
-
-export function getProjectById(id: string): Project | undefined {
-  return getAllProjects().find((project) => project.id === id);
-}
-
-export function getProjectsByProgram(program: string): Project[] {
-  return getAllProjects().filter(
-    (project) => project.program?.toLowerCase() === program.toLowerCase()
-  );
-}
-
-export function getAllProgramTypes(): string[] {
-  const programs = getAllProjects()
-    .map((project) => project.program)
-    .filter((program): program is string => Boolean(program));
-
-  return Array.from(new Set(programs)).sort();
-}
-
-export function getAllProjectIds(): string[] {
-  return getAllProjects().map((project) => project.id);
+  return folders.map(readProjectFolder).sort((a, b) => b.year - a.year);
 }

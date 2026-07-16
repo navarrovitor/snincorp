@@ -1,51 +1,24 @@
-"use client";
-
-import Image from "next/image";
 import type { Project } from "@/types";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 interface ProjectCardProps {
   project: Project;
-  onSelect?: (project: Project) => void;
+  imageHeight: number;
 }
 
-export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
-  const { ref, isVisible } = useIntersectionObserver<HTMLElement>();
-
+export default function ProjectCard({ project, imageHeight }: ProjectCardProps) {
   return (
-    <article
-      ref={ref}
-      className={`group cursor-pointer transition-all duration-700 ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-      }`}
-    >
-      <button
-        type="button"
-        onClick={() => onSelect?.(project)}
-        className="block w-full text-left"
-        aria-label={`View details for ${project.title}`}
-      >
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-foreground/5">
-          <Image
-            src={project.images.hero}
-            alt={project.title}
-            fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+    <div className="proj-card">
+      <div className="proj-img" style={{ height: imageHeight }}>
+        <div className="proj-img-inner" style={{ height: imageHeight }}>
+          <span className="proj-placeholder">{project.placeholderLabel}</span>
         </div>
-
-        <div className="mt-4 space-y-1">
-          <h3 className="text-lg font-medium">{project.title}</h3>
-          <p className="text-sm text-foreground/60">
-            {project.location} &middot; {project.year}
-            {project.program ? ` · ${project.program}` : ""}
-          </p>
-          <p className="line-clamp-2 text-sm text-foreground/70">
-            {project.description}
-          </p>
+      </div>
+      <div style={{ padding: "20px 0 0" }}>
+        <div className="proj-title">{project.title}</div>
+        <div className="proj-meta">
+          {project.location} &nbsp;·&nbsp; {project.year} &nbsp;·&nbsp; {project.program}
         </div>
-      </button>
-    </article>
+      </div>
+    </div>
   );
 }

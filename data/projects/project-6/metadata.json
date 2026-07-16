@@ -1,0 +1,10 @@
+{
+  "id": "edificio-esmeralda",
+  "title": "Edifício Esmeralda",
+  "location": "Curitiba",
+  "year": 2021,
+  "program": "Residencial Multifamiliar",
+  "placeholderLabel": "edifício residencial multifamiliar",
+  "description": "Complexo de 18 andares com ênfase em sustentabilidade, ventilação natural e integração paisagística ao entorno urbano.",
+  "featured": true
+}
